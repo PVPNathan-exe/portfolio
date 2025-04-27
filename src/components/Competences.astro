@@ -1,19 +1,31 @@
 ---
-const logos = import.meta.glob('/public/assets/icons/*.svg', { eager: true });
-const logoPaths = Object.keys(logos);
+const logos = import.meta.glob('/assets/svg/*.svg', { eager: true });
+const logoPaths = Object.entries(logos).map(([path, module]) => module.default || path);
 
-// Mélange aléatoirement les logos
-const shuffledLogos = [...logoPaths].sort(() => Math.random() - 0.5);
+// Fonction pour diviser en lignes de 6
+function splitIntoRows(array, size) {
+    const rows = [];
+    for (let i = 0; i < array.length; i += size) {
+        rows.push(array.slice(i, i + size));
+    }
+    return rows;
+}
+
+const logoRows = splitIntoRows(logoPaths, 6);
 ---
 
 <section class="competences-container">
     <h2 class="section-title">Mes Compétences</h2>
 
     <div class="logos-container">
-        {shuffledLogos.map((path, index) => (
-                <div class="logo-wrapper" data-index={index}>
-                    <img src={path} class="logo" />
-                    <div class="logo-name">{path.split('/').pop().split('.')[0]}</div>
+        {logoRows.map((row, rowIndex) => (
+                <div class="logo-row" key={rowIndex}>
+                    {row.map((path, index) => (
+                            <div class="logo-wrapper" key={rowIndex * 6 + index}>
+                                <img src={path} class="logo" alt={path.split('/').pop().split('.')[0]} loading="lazy" />
+                                <div class="logo-name">{path.split('/').pop().split('.')[0]}</div>
+                            </div>
+                    ))}
                 </div>
         ))}
     </div>
@@ -33,12 +45,19 @@ const shuffledLogos = [...logoPaths].sort(() => Math.random() - 0.5);
 
     .logos-container {
         display: flex;
-        flex-wrap: wrap; /* pour aller à la ligne si trop de logos */
+        flex-direction: column;
         gap: 30px;
-        justify-content: center;
+        align-items: center;
         padding: 1rem;
         width: 90%;
         margin: 0 auto;
+    }
+
+    .logo-row {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
     .logo-wrapper {
@@ -54,13 +73,14 @@ const shuffledLogos = [...logoPaths].sort(() => Math.random() - 0.5);
         padding: 15px;
         width: 100px;
         height: 100px;
-        background-color: white; /* Optionnel */
+        background-color: white;
     }
 
     .logo {
         width: 50px;
         height: 50px;
         margin-bottom: 10px;
+        object-fit: contain;
     }
 
     .logo-name {
