@@ -1,0 +1,46 @@
+---
+// src/components/Accueil.astro
+
+const props = {
+    name: "Nathan Soares",
+    formation: "Étudiant BTS SIO Option SLAM",
+    description: "Je suis étudiant en BTS SIO au Campus Ste Marguerite, je suis passionné par le développement informatique. J’aime créer des programmes, apprendre de nouveaux langages et logiciel de programmation. Ce portfolio reflète mon parcours, mes compétences en programmation, et mes projets réalisés en développement web et logiciel. "
+};
+---
+
+<section class="accueil-container">
+    <div class="accueil-content">
+        <h1 class="accueil-title">{props.name} - {props.formation}</h1>
+        <p class="accueil-description">{props.description}</p>
+    </div>
+</section>
+
+
+<style>
+    .accueil-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .accueil-content {
+        max-width: 800px;
+        padding: 2rem;
+    }
+
+    .accueil-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 2rem;
+        color: var(--text-color);
+    }
+
+    .accueil-description {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin: 0;
+        color: var(--subtext-color);
+    }
+</style>

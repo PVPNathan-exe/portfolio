@@ -1,0 +1,146 @@
+    <!-- src/components/Experiences.astro -->
+
+    <section class="experiences-container">
+        <h2 class="section-title">Mes Expériences</h2>
+
+        <div class="experiences-grid">
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3 class="experience-title">Stage - Alvys Informatique</h3>
+                    <span class="experience-date">Mars 2025 -<br> Avril 2025</span>
+                </div>
+                <p class="experience-description">
+                    Création d'un panneau de saisie avec Visual Studios 2022 afin de modifier les lignes d'une table via SQL
+                </p>
+                <div class="experience-languages">
+                    <img src="src/assets/icons/Visual Studio 2022.svg" alt="Vs2022" class="language-icon">
+                    <img src="src/assets/icons/html.svg" alt="HTML" class="language-icon">
+                    <img src="src/assets/icons/css.svg" alt="CSS" class="language-icon">
+                    <img src="src/assets/icons/blazor.svg" alt="Blazor" class="language-icon">
+                    <img src="src/assets/icons/csharp.svg" alt="C#" class="language-icon">
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3 class="experience-title">Stage - Eiffage Energie Systeme</h3>
+                    <span class="experience-date">Mai 2024 - <br> Juin 2024</span>
+                </div>
+                <p class="experience-description">
+                    Création d'un site web permettant de controller le chauffage/climatisation, volets et lumières de chaque piece du batiment
+                </p>
+                <div class="experience-languages">
+                    <img src="src/assets/icons/Visual Studio Code.svg" alt="Python" class="language-icon">
+                    <img src="src/assets/icons/python.svg" alt="Python" class="language-icon">
+                    <img src="src/assets/icons/html.svg" alt="HTML" class="language-icon">
+                    <img src="src/assets/icons/css.svg" alt="CSS" class="language-icon">
+                    <img src="src/assets/icons/javascript.svg" alt="Js" class="language-icon">
+                    <img src="src/assets/icons/sqlite.svg" alt="Js" class="language-icon">
+                </div>
+            </div>
+
+            <!-- Vous pouvez ajouter d'autres éléments d'expérience ici -->
+        </div>
+    </section>
+
+    <style>
+        .experiences-container {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+
+        .experiences-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .experience-item {
+            background-color: var(--bg-color);
+            border: 2px solid #28a745; /* Bordure verte permanente */
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            position: relative;
+            transition: all 0.3s ease; /* Transition pour un effet fluide */
+        }
+
+        .experience-item:hover {
+            border: 2px solid #007bff; /* Bordure bleue lors du survol */
+            box-shadow: 0 8px 15px rgba(0, 123, 255, 0.5); /* Shadowbox bleue lors du survol */
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .experience-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .experience-date {
+            font-size: 1.4rem;
+            font-weight: normal;
+            color: var(--text-color);
+            text-align: right;
+        }
+
+        .experience-description {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 1.5rem 0;
+            color: var(--text-color);
+        }
+
+        .experience-languages {
+            display: flex;
+            justify-content: flex-start;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .language-icon {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .experiences-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .experience-item {
+                padding: 1rem;
+            }
+
+            .experience-title {
+                font-size: 1.6rem;
+            }
+
+            .experience-date {
+                font-size: 1.2rem;
+            }
+
+            .experience-description {
+                font-size: 1rem;
+            }
+        }
+    </style>

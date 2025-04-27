@@ -1,0 +1,39 @@
+/* src/styles/theme.css */
+
+/* Variables globales */
+:root {
+    --text-light: #111;
+    --text-dark: #fff;
+    --subtext-light: #666;
+    --subtext-dark: #aaa;
+    --bg-light: #ffffff;
+    --bg-dark: #1a1a1a;
+    --border-light: #ccc;
+    --border-dark: #333;
+}
+
+/* Thème clair */
+body.light {
+    --text-color: var(--text-light);
+    --subtext-color: var(--subtext-light);
+    --bg-color: var(--bg-light);
+    --border-color: var(--border-light);
+}
+
+/* Thème sombre */
+body.dark {
+    --text-color: var(--text-dark);
+    --subtext-color: var(--subtext-dark);
+    --bg-color: var(--bg-dark);
+    --border-color: var(--border-dark);
+}
+
+/* Styles généraux */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}

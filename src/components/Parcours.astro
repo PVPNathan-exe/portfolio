@@ -1,0 +1,241 @@
+<!-- src/components/Parcours.astro -->
+
+<section class="parcours-container">
+    <h2 class="parcours-title">Mon Parcours</h2>
+    <div class="timeline">
+        <div class="timeline-line">
+            <div class="timeline-third timeline-bac"></div>
+            <div class="timeline-third timeline-bts"></div>
+            <div class="timeline-third timeline-futur"></div>
+        </div>
+
+        <div class="timeline-items">
+            <div class="timeline-item bac">
+                <div class="timeline-box">
+                    <div class="timeline-date">2020 - 2023</div>
+                    <div class="timeline-content">
+                        <strong>Baccalauréat Général</strong>
+                        <br>Spécialité Mathématique et NSI<br>
+                        Lycée Ste Marguerite (37)
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item bts">
+                <div class="timeline-box">
+                    <div class="timeline-date">2023 - 2025</div>
+                    <div class="timeline-content">
+                        <strong>BTS SIO Option SLAM</strong>
+                        <br>(Développeur d’application)<br>
+                        Campus Ste Marguerite (37)
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item futur">
+                <div class="timeline-box">
+                    <div class="timeline-date">2025 - 2026</div>
+                    <div class="timeline-content">
+                        <strong>Concepteur Développeur d'Application</strong>
+                        <br>École Informatique ENI<br>
+                        Téléprésentiel au Campus Ste Marguerite (37)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-arrow"></div>
+    </div>
+</section>
+<style>
+.parcours-container {
+    padding: 2rem;
+    text-align: center;
+    }
+
+.parcours-title {
+    font-size: 2.8rem; /* Taille du titre */
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    }
+
+.timeline {
+    position: relative;
+    width: 80%;
+    margin: 4rem auto;
+    }
+
+.timeline-line {
+    position: relative;
+    display: flex;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    }
+
+.timeline-third {
+    width: 33.333%;
+    height: 100%;
+    }
+
+.timeline-bac {
+    background-color: #007bff;
+    }
+
+.timeline-bts {
+    background-color: #28a745;
+    }
+
+.timeline-futur {
+    background-color: #dc3545;
+    }
+
+.timeline-items {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    }
+
+.timeline-item {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+
+.timeline-box {
+    background: var(--bg-color);
+    padding: 1.5rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    width: 320px; /* Taille fixe */
+    height: 250px; /* Hauteur fixe */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    }
+
+.timeline-date {
+    font-size: 1.6rem; /* Plus grand pour les dates */
+    font-weight: bold;
+    margin-bottom: 1rem;
+    }
+
+.timeline-content {
+    font-size: 1.3rem; /* Plus grand pour le contenu */
+    line-height: 1.6;
+    }
+
+/* Couleurs et Ombres */
+.bac .timeline-date,
+.bac .timeline-content {
+    color: #007bff;
+    }
+
+.bts .timeline-date,
+.bts .timeline-content {
+    color: #28a745;
+    }
+
+.futur .timeline-date,
+.futur .timeline-content {
+    color: #dc3545;
+    }
+
+.bac .timeline-box {
+    box-shadow: 0 8px 15px rgba(0, 123, 255, 0.5);
+    }
+
+.bts .timeline-box {
+    box-shadow: 0 8px 15px rgba(40, 167, 69, 0.5);
+    }
+
+.futur .timeline-box {
+    box-shadow: 0 8px 15px rgba(220, 53, 69, 0.5);
+    }
+
+.timeline-arrow {
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 20px solid #dc3545;
+    }
+
+/* Media Queries - Responsive */
+@media (max-width: 1200px) {
+    .timeline-item {
+    width: 40%;
+    }
+
+    .timeline-box {
+    width: 270px; /* Réduit la largeur des boîtes sur grands écrans */
+    }
+
+    .timeline-date {
+    font-size: 1.4rem; /* Taille de texte un peu plus petite */
+    }
+
+    .timeline-content {
+    font-size: 1.2rem; /* Taille de texte un peu plus petite */
+    }
+    }
+
+@media (max-width: 768px) {
+    .timeline-item {
+    width: 50%;
+    }
+
+    .timeline-box {
+    width: 240px; /* Réduit encore les boîtes */
+    height: auto; /* Permet aux boîtes de s'ajuster à leur contenu */
+    }
+
+    .timeline-date {
+    font-size: 1.2rem; /* Plus petit sur mobile */
+    }
+
+    .timeline-content {
+    font-size: 1.1rem; /* Plus petit sur mobile */
+    }
+
+    .timeline-arrow {
+    right: -15px;
+    }
+    }
+
+@media (max-width: 480px) {
+    .timeline-item {
+    width: 100%; /* Les boîtes occuperont toute la largeur */
+    margin-bottom: 2rem; /* Espacement entre les éléments */
+    }
+
+    .timeline-box {
+    width: 90%; /* Prend 90% de la largeur de l'écran */
+    height: auto; /* Laissez le contenu s'ajuster */
+    }
+
+    .timeline-title {
+    font-size: 2.2rem; /* Titre plus petit */
+    }
+
+    .timeline-date {
+    font-size: 1.1rem;
+    }
+
+    .timeline-content {
+    font-size: 1rem;
+    }
+    }
+
+</style>

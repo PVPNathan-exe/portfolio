@@ -1,0 +1,85 @@
+---
+// src/components/Contact.astro
+
+const contactLinks = [
+    { href: 'mailto:nathan.soares1703@gmail.com', icon: '/src/assets/icons/sites/gmail.svg', label: 'Email' },
+    { href: 'tel:+33641223449', icon: '/src/assets/icons/sites/tel.svg', label: 'Téléphone' },
+    { href: 'https://github.com/PVPNathan-exe', icon: '/src/assets/icons/github.svg', label: 'GitHub' },
+    { href: 'https://www.linkedin.com/in/nathan-soares-49b679297/', icon: '/src/assets/icons/sites/linkedin.svg', label: 'LinkedIn' },
+];
+---
+
+<section class="contact-section">
+    <h2>Contactez-moi</h2>
+    <div class="contact-links">
+        {contactLinks.map(link => (
+                <a href={link.href} target="_blank" class="contact-link">
+                    <img src={link.icon} alt={link.label} class="contact-icon" />
+                    {link.label}
+                </a>
+        ))}
+    </div>
+</section>
+
+<style>
+    /* Définition des couleurs dynamiques en fonction du thème */
+    :root {
+        --text-light: #111;
+        --text-dark: #fff;
+    }
+
+    body.light {
+        --text-color: var(--text-light);
+    }
+
+    body.dark {
+        --text-color: var(--text-dark);
+    }
+
+    .contact-section {
+        padding: 2rem;
+        text-align: center;
+        margin: 2rem 0;
+    }
+
+    .contact-section h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: var(--text-color);
+    }
+
+    .contact-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .contact-link {
+        display: flex;
+        align-items: center;
+        font-size: 1.1rem;
+        color: var(--text-color);
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        transition: transform 0.2s, color 0.3s;
+    }
+
+    .contact-link:hover {
+        transform: scale(1.05);
+        text-decoration: underline;
+    }
+
+    .contact-icon {
+        width: 30px;
+        height: 30px;
+        margin-right: 0.5rem;
+        filter: invert(0); /* Icônes noires par défaut */
+
+    }
+
+    body.dark .contact-icon {
+        filter: invert(1); /* Icônes inversées en mode sombre */
+    }
+</style>

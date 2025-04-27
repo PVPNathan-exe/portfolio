@@ -1,16 +1,48 @@
 ---
-
+import NavMenu from '../components/NavMenu.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import Accueil from '../components/Accueil.astro';
+import Parcours from '../components/Parcours.astro';
+import Contact from '../components/Contact.astro';
+import Experiences from "../components/Experiences.astro";
+import Competences from "../components/Competences.astro";
+import Projets from "../components/Projets.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8" />
+	<title>Mon Portfolio</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/src/styles/theme.css">
+</head>
+<body>
+<NavMenu />
+<ThemeToggle />
+
+<section id="accueil" style="padding: 4rem;">
+	<Accueil />
+</section>
+
+<section id="parcours" style="padding: 4rem;">
+	<Parcours />
+</section>
+
+<section id="experience" style="padding: 4rem;">
+	<Experiences />
+</section>
+
+<section id="competence" style="padding: 4rem;">
+	<Competences />
+</section>
+
+<section id="projet" style="padding: 4rem;">
+	<Projets />
+</section>
+
+<section id="contact" style="padding: 4rem;">
+	<Contact />
+</section>
+
+</body>
 </html>

@@ -1,0 +1,81 @@
+---
+const navItems = [
+    { label: 'Accueil', href: '#accueil' },
+    { label: 'Parcours', href: '#parcours' },
+    { label: 'Expérience', href: '#experience' },
+    { label: 'Compétence', href: '#competence' },
+    { label: 'Projet', href: '#projet' },
+    { label: 'Contact', href: '#contact' },
+];
+---
+
+<nav class="nav-menu">
+    <ul>
+        {navItems.map(item => (
+                <li><a href={item.href}>{item.label}</a></li>
+        ))}
+    </ul>
+</nav>
+
+<style>
+    /* Définition des couleurs dynamiques */
+    :root {
+        --nav-bg-light: #fff;
+        --nav-bg-dark: #111;
+        --text-light: #111;
+        --text-dark: #fff;
+        --border-light: #ccc;
+        --border-dark: #333;
+    }
+
+    body.dark {
+        --nav-bg: var(--nav-bg-dark);
+        --text-color: var(--text-dark);
+        --border-color: var(--border-dark);
+    }
+
+    body.light {
+        --nav-bg: var(--nav-bg-light);
+        --text-color: var(--text-light);
+        --border-color: var(--border-light);
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 20px; /* Décalage depuis le haut de la page */
+        left: 50%;
+        transform: translateX(-50%); /* Centrer horizontalement */
+        padding: 1rem;
+        z-index: 1000;
+        background: var(--nav-bg);
+        border: 3px solid var(--border-color); /* Bordure avec couleur dynamique */
+        border-radius: 15px; /* Bordure arrondie */
+        width: 40%; /* Réduire la largeur */
+        max-width: 1200px; /* Limiter la largeur maximale */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre sous le menu */
+    }
+
+    .nav-menu ul {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-menu a {
+        color: var(--text-color); /* Couleur du texte dynamique */
+        text-decoration: none;
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        transition: background 0.3s, transform 0.2s;
+    }
+
+    .nav-menu a:hover {
+        background: #333;
+        transform: scale(1.05);
+    }
+</style>
