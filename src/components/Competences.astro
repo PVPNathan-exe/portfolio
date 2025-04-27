@@ -1,41 +1,21 @@
 ---
-const logos = import.meta.glob('/src/assets/icons/*.svg', { eager: true });
+const logos = import.meta.glob('/public/assets/icons/*.svg', { eager: true });
 const logoPaths = Object.keys(logos);
+
+// Mélange aléatoirement les logos
+const shuffledLogos = [...logoPaths].sort(() => Math.random() - 0.5);
 ---
 
 <section class="competences-container">
     <h2 class="section-title">Mes Compétences</h2>
 
-    <div class="damier-container">
-        <!-- Première ligne de 8 logos -->
-        <div class="line">
-            {logoPaths.slice(0, 8).map((path, index) => (
-                    <div class="logo-wrapper" data-index={index}>
-                        <img src={path} class="logo" />
-                        <div class="logo-name">{path.split('/').pop().split('.')[0]}</div> <!-- Nom sous le logo -->
-                    </div>
-            ))}
-        </div>
-
-        <!-- Deuxième ligne de 7 logos, avec décalage à droite -->
-        <div class="line shifted-right">
-            {logoPaths.slice(8, 15).map((path, index) => (
-                    <div class="logo-wrapper" data-index={index + 8}>
-                        <img src={path} class="logo" />
-                        <div class="logo-name">{path.split('/').pop().split('.')[0]}</div>
-                    </div>
-            ))}
-        </div>
-
-        <!-- Troisième ligne de 8 logos, avec décalage à gauche -->
-        <div class="line shifted-left">
-            {logoPaths.slice(15, 23).map((path, index) => (
-                    <div class="logo-wrapper" data-index={index + 15}>
-                        <img src={path} class="logo" />
-                        <div class="logo-name">{path.split('/').pop().split('.')[0]}</div>
-                    </div>
-            ))}
-        </div>
+    <div class="logos-container">
+        {shuffledLogos.map((path, index) => (
+                <div class="logo-wrapper" data-index={index}>
+                    <img src={path} class="logo" />
+                    <div class="logo-name">{path.split('/').pop().split('.')[0]}</div>
+                </div>
+        ))}
     </div>
 </section>
 
@@ -47,35 +27,18 @@ const logoPaths = Object.keys(logos);
 
     .section-title {
         font-size: 2.8rem;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
         color: var(--text-color);
     }
 
-    .damier-container {
+    .logos-container {
         display: flex;
-        flex-direction: column;
-        gap: 50px; /* Espacement entre les lignes */
-        align-items: center;
+        flex-wrap: wrap; /* pour aller à la ligne si trop de logos */
+        gap: 30px;
         justify-content: center;
         padding: 1rem;
-        width: 80%; /* Ajuster la largeur de la grille */
-        margin: 0 auto; /* Centrer la grille dans le conteneur */
-    }
-
-    .line {
-        display: flex;
-        justify-content: center; /* Centrer les éléments horizontalement */
-        gap: 40px; /* Espacement entre les logos dans chaque ligne */
-    }
-
-    /* Décalage à droite pour la ligne 2 */
-    .shifted-right .logo-wrapper:nth-child(odd) {
-        margin-left: 20px;
-    }
-
-    /* Décalage à gauche pour la ligne 3 */
-    .shifted-left .logo-wrapper:nth-child(even) {
-        margin-right: 20px;
+        width: 90%;
+        margin: 0 auto;
     }
 
     .logo-wrapper {
@@ -85,22 +48,24 @@ const logoPaths = Object.keys(logos);
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        border: 2px solid #28a745; /* Bordure verte */
+        border: 2px solid #28a745;
         border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3); /* Ombre verte */
+        box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
         padding: 15px;
         width: 100px;
         height: 100px;
+        background-color: white; /* Optionnel */
     }
 
     .logo {
-        width: 50px; /* Taille des logos */
+        width: 50px;
         height: 50px;
-        margin-bottom: 10px; /* Espacement entre le logo et le nom */
+        margin-bottom: 10px;
     }
 
     .logo-name {
         font-size: 14px;
         color: var(--text-color);
+        word-break: break-word;
     }
 </style>
